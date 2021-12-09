@@ -1,0 +1,8 @@
+<h1>What is your name?</h1>
+
+<form action="{{ url_for('user')}}" method="post">
+    <input type="text" name="name"/>
+</form>
+
+<p> {{ name }}</p>
+
