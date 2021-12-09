@@ -7,6 +7,6 @@ def index():
 
 @app.route('/user', methods=['POST'])
 def user():
-    extract_name = request.form.get("name")
+    # extract_name = request.form.get("name")
     name = "My name is " + request.form.get("name")
     return render_template('index.html', name=name)
