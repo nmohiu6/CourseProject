@@ -1,0 +1,12 @@
+<h1>Search</h1>
+
+<form action="{{ url_for('user')}}" method="post">
+    <input type="text" name="query"/>
+</form>
+
+<ol>
+    {% for title in titles %}
+        <li>{{title}}</li>
+    {% endfor %}
+</ol>
+

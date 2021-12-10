@@ -2,7 +2,9 @@ from rank_bm25 import BM25Okapi
 from youtube_transcript_api import YouTubeTranscriptApi
 
 def getRankedURLs(query):
-    youtube_urls = ["5q87K1WaoFI", "z-EtmaFJieY", "ukzFI9rgwfU", "NWONeJKn6kc", "h0e2HAPTGF4"]
+    youtube_url_dict = {"5q87K1WaoFI":"Computer Scientist Explains Machine Learning in 5 Levels of Difficulty | WIRED", "z-EtmaFJieY":"Machine Learning & Artificial Intelligence: Crash Course Computer Science #34", "ukzFI9rgwfU":"Machine Learning Basics | What Is Machine Learning? | Introduction To Machine Learning | Simplilearn", "NWONeJKn6kc":"Machine Learning Course for Beginners", "h0e2HAPTGF4":"11. Introduction to Machine Learning"}
+
+    youtube_urls = list(youtube_url_dict.keys())
 
     corpus = []
 
@@ -26,10 +28,11 @@ def getRankedURLs(query):
 
     doc_scores = bm25.get_top_n(tokenized_query, corpus, n=len(corpus))
 
-    string ranks = ""
+    ranks = []
 
-    for i in doc_scores:
-        ranks = ranks + corpus.index(i)) + " "
+    for i in range(len(doc_scores)):
+        url = youtube_urls[corpus.index(doc_scores[i])]
+        ranks.append(youtube_url_dict[url])
 
     return ranks
 
